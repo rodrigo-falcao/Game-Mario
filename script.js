@@ -1,7 +1,6 @@
 let gameOver = false;
 let loop;
 let counter = 0;
-// let lastPipePosition = null;
 
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
@@ -32,31 +31,26 @@ const incrementCounter = () => {
   }
 };
 
-
 // Usando a versão exclusiva para dispositivos móveis
 if (window.innerWidth <= 767) {
   loop = setInterval(() => {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
 
-    // if (pipePosition <= -27) {
-    //   lastPipePosition = pipePosition;
-      
-    // } 
-        if (pipePosition <= 80 && marioPosition < 10) {
-        pipe.style.animation = "none";
-        pipe.style.left = `${pipePosition}px`;
+    if (pipePosition <= 80 && marioPosition < 10) {
+    pipe.style.animation = "none";
+    pipe.style.left = `${pipePosition}px`;
 
-        mario.style.animation = "none";
-        mario.style.bottom = `${marioPosition}px`;
+    mario.style.animation = "none";
+    mario.style.bottom = `${marioPosition}px`;
 
-        mario.src = "./images/game-over.png";
-        mario.style.width = "35px";
-        mario.style.marginLeft = "50px";
+    mario.src = "./images/game-over.png";
+    mario.style.width = "35px";
+    mario.style.marginLeft = "50px";
 
-        clearInterval(loop);
-        clearInterval(interval);
-        gameOver = true;
+    clearInterval(loop);
+    clearInterval(interval);
+    gameOver = true;
     }
   }, 8); 
   document.addEventListener("touchstart", jump);
@@ -68,12 +62,6 @@ else {
   loop = setInterval(() => {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
-    
-    if (pipePosition <= -52 ) {
-      // counter++;
-      // counterElement.innerHTML = counter;
-      lastPipePosition = pipePosition;
-    }
 
     if (pipePosition <= 120 && marioPosition < 40) {
       pipe.style.animation = "none";
