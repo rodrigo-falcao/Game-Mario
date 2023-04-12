@@ -1,7 +1,7 @@
 let gameOver = false;
 let loop;
 let counter = 0;
-let lastPipePosition = null;
+// let lastPipePosition = null;
 
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
@@ -12,7 +12,7 @@ const refreshPage = () => {
   location.reload();
 };
 
-// funcao de contagem de pulos, final do game e pausa
+// funcao de final do game e pausa do pipe
 const jump = () => { 
     if (gameOver) {
         return;
@@ -24,6 +24,14 @@ const jump = () => {
     }, 500);
 }
 
+// função do contador por tempo de passagem
+const incrementCounter = () => {
+  if (!gameOver) {
+    counter++;
+    counterElement.innerHTML = counter;
+  }
+};
+
 
 // Usando a versão exclusiva para dispositivos móveis
 if (window.innerWidth <= 767) {
@@ -31,12 +39,10 @@ if (window.innerWidth <= 767) {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
 
-    if (pipePosition <= -27) {
-      counter++;
-      counterElement.innerHTML = counter;
-      lastPipePosition = pipePosition;
+    // if (pipePosition <= -27) {
+    //   lastPipePosition = pipePosition;
       
-    } 
+    // } 
         if (pipePosition <= 80 && marioPosition < 10) {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
@@ -49,10 +55,12 @@ if (window.innerWidth <= 767) {
         mario.style.marginLeft = "50px";
 
         clearInterval(loop);
+        clearInterval(interval);
         gameOver = true;
     }
   }, 8); 
   document.addEventListener("touchstart", jump);
+  interval = setInterval(incrementCounter, 1500);
 } 
 
 // versão exclusiva para outros dispositivos
@@ -61,9 +69,9 @@ else {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
     
-    if (pipePosition <= -53 ) {
-      counter++;
-      counterElement.innerHTML = counter;
+    if (pipePosition <= -52 ) {
+      // counter++;
+      // counterElement.innerHTML = counter;
       lastPipePosition = pipePosition;
     }
 
@@ -79,9 +87,11 @@ else {
       mario.style.marginLeft = "50px";
 
       clearInterval(loop);
+      clearInterval(interval);
       gameOver = true;
     }
   }, 15);
   document.addEventListener("keydown", jump);
+  interval = setInterval(incrementCounter, 1500);
 }
 
