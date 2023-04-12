@@ -7,6 +7,10 @@ const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const counterElement = document.getElementById("counter");
 
+const refreshPage = () => {
+  location.reload();
+};
+
 // funcao de contagem de pulos, final do game e pausa
 const jump = () => {
     if (gameOver) {
@@ -26,10 +30,11 @@ if (window.innerWidth <= 767) {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
 
-    if (pipePosition <= 10) {
+    if (pipePosition <= -27) {
       counter++;
       counterElement.innerHTML = counter;
       lastPipePosition = pipePosition;
+      
     } 
         if (pipePosition <= 80 && marioPosition < 10) {
         pipe.style.animation = "none";
@@ -56,7 +61,7 @@ else {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", " ");
     
-    if (pipePosition <= 10) {
+    if (pipePosition <= -53 ) {
       counter++;
       counterElement.innerHTML = counter;
       lastPipePosition = pipePosition;
@@ -79,6 +84,4 @@ else {
   }, 10);
   document.addEventListener("keydown", jump);
 }
-
-
 
