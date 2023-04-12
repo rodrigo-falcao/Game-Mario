@@ -7,12 +7,13 @@ const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const counterElement = document.getElementById("counter");
 
+// funcao do botao de atualizacao de pagina
 const refreshPage = () => {
   location.reload();
 };
 
 // funcao de contagem de pulos, final do game e pausa
-const jump = () => {
+const jump = () => { 
     if (gameOver) {
         return;
     }
@@ -50,10 +51,9 @@ if (window.innerWidth <= 767) {
         clearInterval(loop);
         gameOver = true;
     }
-  }, 5); 
+  }, 8); 
   document.addEventListener("touchstart", jump);
 } 
-
 
 // versão exclusiva para outros dispositivos
 else {
@@ -81,7 +81,7 @@ else {
       clearInterval(loop);
       gameOver = true;
     }
-  }, 10);
+  }, 15);
   document.addEventListener("keydown", jump);
 }
 
