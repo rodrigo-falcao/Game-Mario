@@ -2,8 +2,9 @@
 O jogo consiste em fazer o personagem Mario pular sobre os canos que surgem em sua frente. <br>O jogador ganha pontos a cada salto bem sucedido e pode reiniciar o jogo clicando no botão "Reiniciar".
 
 
-![image](https://user-images.githubusercontent.com/125101340/236076931-a50a4e18-334c-43dc-9f78-def190fca476.png)
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/125101340/236076931-a50a4e18-334c-43dc-9f78-def190fca476.png" width="450" alt="accessibility text">
+</p>
 
 <h2>Tecnologias utilizadas</h2>
 <li>HTML5</li>
